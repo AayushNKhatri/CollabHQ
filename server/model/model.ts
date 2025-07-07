@@ -6,8 +6,8 @@ import Announcement from "./Announcement.model"
 import Room from "./Room.model";
 import RoomMember from "./RoomMember.model";
 
-User.hasMany(Project, {foreignKey: 'UserID', as: 'Projects'});
-Project.belongsTo(User, {foreignKey: 'UserID', as: 'Owner'});
+User.hasMany(Project, {foreignKey: 'CreatedBy', as: 'Projects'});
+Project.belongsTo(User, {foreignKey: 'CreatedBy', as: 'Owner'});
 Project.hasMany(Task, {foreignKey: 'ProjectID', as: 'Tasks'});
 Task.belongsTo(Project, {foreignKey: 'ProjectID', as: 'Project'});
 Task.belongsTo(User, {foreignKey: 'AssignedTo', as: 'Assignee'});
