@@ -20,3 +20,8 @@ export enum RoomType {
     Public = "Public",
     Private = "Private",
 }
+export enum RoomRole {
+    Creator = "Creator",
+    Admin = "Admin",
+    Member = "Member",
+}

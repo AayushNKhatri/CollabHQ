@@ -1,6 +1,7 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/database";
 import { AnnouncementStatus } from "../lib/enums";
+import e from "express";
 
 class Announcement extends Model {
     public AnnouncementID!: string;
@@ -21,7 +22,7 @@ Announcement.init({
         type: DataTypes.UUID,
         allowNull: false,
         references: {
-            model: 'Project', // Assuming the Project model is in the same database
+            model: 'projects', // Assuming the Project model is in the same database
             key: 'ProjectID'
         }
     },
@@ -34,10 +35,10 @@ Announcement.init({
         allowNull: false
     },
     CreatedBy: {
-        type: DataTypes.STRING,
+        type: DataTypes.UUID,
         allowNull: false,
         references: {
-            model: 'User', // Assuming the User model is in the same database
+            model: 'users', // Assuming the User model is in the same database
             key: 'id'
         }
     },
@@ -51,3 +52,4 @@ Announcement.init({
     tableName: 'announcements',
     timestamps: true,
 });
+export default Announcement;

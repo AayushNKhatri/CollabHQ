@@ -8,7 +8,7 @@ class Room extends Model {
     public RoomName!: string;
     public CreatedBy!: string; // this should alwoys be the project creator 
     public Description!: string;
-    public RoomType!: RoomType; // This can be 'public' or 'private'
+    public RoomType!: RoomType; // This can be 'public' or 'private' 
 }
 
 Room.init({
@@ -21,7 +21,7 @@ Room.init({
         type: DataTypes.UUID,
         allowNull: false,
         references: {
-            model: 'Project', // Assuming the Project model is in the same database
+            model: 'projects', // Assuming the Project model is in the same database
             key: 'ProjectID'
         }
     },
@@ -30,10 +30,10 @@ Room.init({
         allowNull: false
     },
     CreatedBy: {
-        type: DataTypes.STRING,
+        type: DataTypes.UUID,
         allowNull: false,
         references: {
-            model: 'User', // Assuming the User model is in the same database
+            model: 'users', // Assuming the User model is in the same database
             key: 'id'
         }
     },
@@ -41,8 +41,9 @@ Room.init({
         type: DataTypes.TEXT,
         allowNull: true
     },
+     //if room type is public then everyone in project can see it ,if private then only creator and admin and assigend mener can se it can see it
     RoomType: {
-        type: DataTypes.ENUM(...Object.values(RoomType)),
+        type: DataTypes.ENUM(...Object.values(RoomType)),  
         allowNull: false
     }
 }, {
@@ -51,3 +52,4 @@ Room.init({
     tableName: 'rooms',
     timestamps: true,
 });
+export default Room;

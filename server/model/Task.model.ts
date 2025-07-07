@@ -21,8 +21,8 @@ Task.init({
         type:DataTypes.UUID,
         allowNull:false,
         references: {
-            model: 'Project', // Assuming the Project model is in the same database
-            key: 'ProjectId'
+            model: 'projects', // Assuming the Project model is in the same database
+            key: 'ProjectID'
          } // The primary key of the Project model
     },
     TaskName:{
@@ -30,10 +30,10 @@ Task.init({
         allowNull:false
     },
     AssignedTo:{
-        type:DataTypes.STRING,
+        type:DataTypes.UUID,
         allowNull:false,
         references: {
-            model: 'User', // Assuming the User model is in the same database
+            model: 'users', // Assuming the User model is in the same database
             key: 'id' // The primary key of the User model
         }
     },
@@ -57,4 +57,4 @@ Task.init({
     timestamps: true,
 }
 );
-
+export default Task;

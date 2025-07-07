@@ -25,12 +25,14 @@ Project.init({
         allowNull: true
     },
     CreatedBy: {
-        type: DataTypes.STRING,
+        type: DataTypes.UUID,
         allowNull: false,
         references: {
-            model: 'User', // Assuming the User model is in the same database
+            model: 'users', // Assuming the User model is in the same database
             key: 'id' // The primary key of the User model
-        }
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
     },
     Status: {
         type: DataTypes.ENUM(...Object.values(Status)),
@@ -42,3 +44,4 @@ Project.init({
     tableName: 'projects',
     timestamps: true,
 });
+export default Project;

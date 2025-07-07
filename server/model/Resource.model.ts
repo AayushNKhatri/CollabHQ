@@ -22,7 +22,7 @@ Resource.init({
         type: DataTypes.UUID,
         allowNull: false,
         references: {
-            model: 'Project', 
+            model: 'projects', 
             key: 'ProjectID'
         }
     },
@@ -30,7 +30,7 @@ Resource.init({
         type: DataTypes.UUID,
         allowNull: true,
         references: {
-            model: 'Task', 
+            model: 'tasks', 
             key: 'TaskID'
         }
     },
@@ -56,3 +56,4 @@ Resource.init({
     tableName: 'resources',
     timestamps: true,
 });
+export default Resource;
